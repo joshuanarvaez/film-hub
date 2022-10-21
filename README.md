@@ -14,3 +14,6 @@ Then user will be authenticated, they will approve, and then we will redirect ba
 Once we do that, we get a sessionId. Then, we can get the userData and dispaatch the function to set the user to be in our entire application state. Once, we set this user to the state, we can then use this user whenever we want.
 
 We use Alan AI voice assistant to execute some simple voice commands. We connect our app with Alan using an API key. We write scripts on Alan's app and pass in an array of genres to build out our voice assistant.
+
+Deployed on Netlify
+https://jn-film-hub.netlify.app/ 
