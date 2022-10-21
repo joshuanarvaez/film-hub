@@ -8,6 +8,8 @@ import { selectGenreOrCategory } from '../../features/currentGenreOrCategory';
 import { useGetGenresQuery } from '../../services/TMDB';
 import useStyles from './styles';
 import genreIcons from '../../assets/genres';
+import redlogo from '../../assets/images/redlogo.png';
+import bluelogo from '../../assets/images/bluelogo.png';
 
 const categories = [
   { label: 'Popular', value: 'popular' },
@@ -15,8 +17,8 @@ const categories = [
   { label: 'Upcoming', value: 'upcoming' },
 ];
 
-const redLogo = 'https://fontmeme.com/permalink/210930/8531c658a743debe1e1aa1a2fc82006e.png';
-const blueLogo = 'https://fontmeme.com/permalink/210930/6854ae5c7f76597cf8680e48a2c8a50a.png';
+const redLogo = bluelogo;
+const blueLogo = redlogo;
 
 const Sidebar = ({ setMobileOpen }) => {
   const { genreIdOrCategoryName } = useSelector((state) => state.currentGenreOrCategory);
@@ -25,7 +27,9 @@ const Sidebar = ({ setMobileOpen }) => {
   const { data, isFetching } = useGetGenresQuery();
   const dispatch = useDispatch();
 
-  console.log(data);
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [genreIdOrCategoryName]);
 
   return (
     <>
@@ -33,7 +37,7 @@ const Sidebar = ({ setMobileOpen }) => {
         <img
           className={classes.image}
           src={theme.palette.mode === 'light' ? redLogo : blueLogo}
-          alt="Film Hub logo"
+          alt="Filmpire logo"
         />
       </Link>
       <Divider />
@@ -43,7 +47,7 @@ const Sidebar = ({ setMobileOpen }) => {
           <Link key={value} className={classes.links} to="/">
             <ListItem onClick={() => dispatch(selectGenreOrCategory(value))} button>
               <ListItemIcon>
-                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImages} height={30} />
+                <img src={genreIcons[label.toLowerCase()]} className={classes.genreImage} height={30} />
               </ListItemIcon>
               <ListItemText primary={label} />
             </ListItem>
@@ -61,14 +65,13 @@ const Sidebar = ({ setMobileOpen }) => {
           <Link key={name} className={classes.links} to="/">
             <ListItem onClick={() => dispatch(selectGenreOrCategory(id))} button>
               <ListItemIcon>
-                <img src={genreIcons[name.toLowerCase()]} className={classes.genreImages} height={30} />
+                <img src={genreIcons[name.toLowerCase()]} className={classes.genreImage} height={30} />
               </ListItemIcon>
               <ListItemText primary={name} />
             </ListItem>
           </Link>
         ))}
       </List>
-
     </>
   );
 };
