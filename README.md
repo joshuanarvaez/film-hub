@@ -8,7 +8,7 @@
 - [Acknowledgements](#acknowledgements)
 
 ## Overview
-![Alt text](/assets/images/screenshot.png?raw=true "Film Hub Screenshot")
+![Alt text](/src/assets/images/screenshot.png?raw=true "Film Hub Screenshot")
 
  Live demo: https://jn-film-hub.netlify.app/ 
  
